@@ -1,0 +1,6 @@
+.devcontainer/
+.vscode/
+.github/
+build/
+managed_components/
+.clangd

@@ -1,0 +1,12 @@
+﻿idf_component_register(
+    SRCS 
+        "src/escpos.c"
+        "src/escpos_commands.c"
+        "src/escpos_utils.c"
+        "src/escpos_formatter.c"
+        "src/transport/escpos_usb.c"
+    INCLUDE_DIRS
+        "include"
+    REQUIRES
+        "usb_host_cdc_acm"
+)

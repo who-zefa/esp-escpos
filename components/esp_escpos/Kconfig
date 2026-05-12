@@ -1,0 +1,30 @@
+menu "ESP32 ESC/POS Library"
+
+    config ESCPOS_DEBUG
+        bool "Enable debug logging"
+        default n
+        help
+            Enable debug logging for the ESC/POS library.
+
+    config ESCPOS_MAX_TRANSPORTS
+        int "Maximum number of transports"
+        default 4
+        range 1 10
+        help
+            Maximum number of transport instances that can be created.
+
+    config ESCPOS_DEFAULT_TIMEOUT_MS
+        int "Default timeout (ms)"
+        default 3000
+        range 100 10000
+        help
+            Default timeout for transport operations in milliseconds.
+
+    config ESCPOS_BUFFER_SIZE
+        int "Internal buffer size"
+        default 512
+        range 128 4096
+        help
+            Size of internal buffer for command formatting.
+
+endmenu

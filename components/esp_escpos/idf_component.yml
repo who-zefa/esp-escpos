@@ -1,0 +1,48 @@
+## Espressif Component Registry manifest for esp32_escpos
+## https://components.espressif.com/
+
+version: "0.1.0"
+description: >
+  Transport-agnostic ESC/POS thermal printer library for ESP-IDF v5+.
+  Supports USB CDC Host, UART, and TCP backends. Features text, QR codes,
+  barcodes, bitmaps, async print queue, UTF-8 transcoding, and more.
+
+url: "https://github.com/your-org/esp32-escpos"
+repository: "https://github.com/your-org/esp32-escpos.git"
+
+issues: "https://github.com/your-org/esp32-escpos/issues"
+documentation: "https://github.com/your-org/esp32-escpos/blob/main/components/esp32_escpos/docs/API.md"
+discussion: "https://github.com/your-org/esp32-escpos/discussions"
+
+license: "MIT"
+
+tags:
+  - printer
+  - escpos
+  - thermal
+  - usb
+  - uart
+  - tcp
+  - receipt
+  - barcode
+  - qrcode
+
+targets:
+  - esp32s2
+  - esp32s3
+  - esp32p4
+  - esp32        # UART / TCP transports only
+  - esp32c3      # UART / TCP transports only
+  - esp32c6      # UART / TCP transports only
+  - esp32h2      # UART / TCP transports only
+
+dependencies:
+  idf:
+    version: ">=5.0.0"
+
+  ## USB backend dependency – optional; only needed when ESCPOS_TRANSPORT_USB=y
+  ## Declared here so the registry can resolve it; conditionally linked via CMake.
+  espressif/usb_host_cdc_acm:
+    version: "*"
+    rules:
+      - if: "idf_version >= 5.0"
