@@ -27,10 +27,18 @@ extern "C" {
 /* ─────────────────────────────────────────────────────────────────────────────
  * Default paper width (characters, font A)
  * ───────────────────────────────────────────────────────────────────────────*/
-#ifndef CONFIG_ESCPOS_PAPER_WIDTH
+/* Default paper width (characters, font A) */
+#ifndef CONFIG_ESCPOS_PAPER_WIDTH_CHARS
 #define ESCPOS_PAPER_WIDTH      48
 #else
-#define ESCPOS_PAPER_WIDTH      CONFIG_ESCPOS_PAPER_WIDTH
+#define ESCPOS_PAPER_WIDTH      CONFIG_ESCPOS_PAPER_WIDTH_CHARS
+#endif
+
+/* Default printable width in dots. Common values: 384 for 58mm, 576 for 80mm. */
+#ifndef CONFIG_ESCPOS_PRINTER_WIDTH_DOTS
+#define ESCPOS_PRINTER_WIDTH_DOTS 384
+#else
+#define ESCPOS_PRINTER_WIDTH_DOTS CONFIG_ESCPOS_PRINTER_WIDTH_DOTS
 #endif
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -70,6 +78,38 @@ extern "C" {
 #define ESCPOS_USB_CONNECT_TIMEOUT_MS 2000
 #else
 #define ESCPOS_USB_CONNECT_TIMEOUT_MS CONFIG_ESCPOS_USB_CONNECT_TIMEOUT_MS
+#endif
+
+/* ─────────────────────────────────────────────────────────────────────────────
+ * Image printing configuration
+ * ───────────────────────────────────────────────────────────────────────────*/
+
+/* Maximum image file size in bytes (400 KB default) */
+#ifndef CONFIG_ESCPOS_MAX_IMAGE_SIZE_BYTES
+#define ESCPOS_MAX_IMAGE_SIZE_BYTES (400 * 1024)
+#else
+#define ESCPOS_MAX_IMAGE_SIZE_BYTES CONFIG_ESCPOS_MAX_IMAGE_SIZE_BYTES
+#endif
+
+/* Maximum image width in pixels (printer physical width, typically 384 or 512 dots) */
+#ifndef CONFIG_ESCPOS_MAX_IMAGE_WIDTH
+#define ESCPOS_MAX_IMAGE_WIDTH 384
+#else
+#define ESCPOS_MAX_IMAGE_WIDTH CONFIG_ESCPOS_MAX_IMAGE_WIDTH
+#endif
+
+/* Maximum image height in pixels (memory constraint, 1024 pixels default) */
+#ifndef CONFIG_ESCPOS_MAX_IMAGE_HEIGHT
+#define ESCPOS_MAX_IMAGE_HEIGHT 1024
+#else
+#define ESCPOS_MAX_IMAGE_HEIGHT CONFIG_ESCPOS_MAX_IMAGE_HEIGHT
+#endif
+
+/* Maximum bitmap data size in bytes (allocated memory for processed bitmap) */
+#ifndef CONFIG_ESCPOS_MAX_BITMAP_SIZE_BYTES
+#define ESCPOS_MAX_BITMAP_SIZE_BYTES (48 * 1024)
+#else
+#define ESCPOS_MAX_BITMAP_SIZE_BYTES CONFIG_ESCPOS_MAX_BITMAP_SIZE_BYTES
 #endif
 
 #ifdef __cplusplus

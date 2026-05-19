@@ -27,4 +27,48 @@ menu "ESP32 ESC/POS Library"
         help
             Size of internal buffer for command formatting.
 
+    config ESCPOS_PAPER_WIDTH_CHARS
+        int "Default paper width in text columns"
+        default 48
+        range 16 96
+        help
+            Default printable text width in Font A columns. Typical values are
+            32 for 58mm printers and 48 for 80mm printers.
+
+    config ESCPOS_PRINTER_WIDTH_DOTS
+        int "Default printer width in dots"
+        default 384
+        range 1 1024
+        help
+            Default printable head width in dots. Common values are 384 for
+            58mm printers and 576 for 80mm printers.
+
+    config ESCPOS_MAX_IMAGE_SIZE_BYTES
+        int "Maximum image file size in bytes"
+        default 409600
+        range 1024 1048576
+        help
+            Maximum encoded image file size accepted by the image loader.
+
+    config ESCPOS_MAX_IMAGE_WIDTH
+        int "Maximum image print width in dots"
+        default 384
+        range 1 1024
+        help
+            Maximum output width for image scaling and printing.
+
+    config ESCPOS_MAX_IMAGE_HEIGHT
+        int "Maximum scaled image height in dots"
+        default 1024
+        range 1 4096
+        help
+            Maximum output height after image scaling.
+
+    config ESCPOS_MAX_BITMAP_SIZE_BYTES
+        int "Maximum processed bitmap size in bytes"
+        default 49152
+        range 128 262144
+        help
+            Maximum RAM used by processed 1-bit image bitmap data.
+
 endmenu

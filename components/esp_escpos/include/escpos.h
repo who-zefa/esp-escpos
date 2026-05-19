@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include "esp_err.h"
+#include "escpos_types.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -11,6 +12,7 @@ extern "C" {
 
 typedef struct escpos_printer_s escpos_printer_t;
 
+/* Public APIs - core functionality */
 esp_err_t escpos_init(void);
 esp_err_t escpos_deinit(void);
 esp_err_t escpos_new_usb(escpos_printer_t **printer);
@@ -20,6 +22,16 @@ void escpos_destroy(escpos_printer_t *printer);
 esp_err_t escpos_init_printer(escpos_printer_t *printer);
 esp_err_t escpos_write_raw(escpos_printer_t *printer, const uint8_t *data, size_t len);
 esp_err_t escpos_write_text(escpos_printer_t *printer, const char *text);
+esp_err_t escpos_set_align(escpos_printer_t *printer, escpos_align_t align);
+esp_err_t escpos_set_bold(escpos_printer_t *printer, bool enabled);
+esp_err_t escpos_set_underline(escpos_printer_t *printer, uint8_t thickness);
+esp_err_t escpos_set_font(escpos_printer_t *printer, escpos_font_t font);
+esp_err_t escpos_set_text_size(escpos_printer_t *printer, uint8_t width, uint8_t height);
+esp_err_t escpos_set_style(escpos_printer_t *printer, escpos_style_t style);
+esp_err_t escpos_reset_text_format(escpos_printer_t *printer);
+esp_err_t escpos_set_printer_width(escpos_printer_t *printer, uint16_t dots, uint16_t chars);
+uint16_t escpos_get_printer_width_dots(const escpos_printer_t *printer);
+uint16_t escpos_get_printer_width_chars(const escpos_printer_t *printer);
 esp_err_t escpos_feed_line(escpos_printer_t *printer);
 esp_err_t escpos_feed_lines(escpos_printer_t *printer, uint8_t n);
 esp_err_t escpos_cut_paper(escpos_printer_t *printer);
@@ -27,6 +39,9 @@ esp_err_t escpos_cut_paper_partial(escpos_printer_t *printer);
 esp_err_t escpos_beep(escpos_printer_t *printer);
 bool escpos_is_connected(const escpos_printer_t *printer);
 esp_err_t escpos_wait_disconnect(escpos_printer_t *printer, uint32_t timeout_ms);
+
+/* Image printing API - now included in main library */
+#include "escpos_image.h"
 
 #ifdef __cplusplus
 }
