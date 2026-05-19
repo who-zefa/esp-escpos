@@ -4,6 +4,8 @@
         "src/escpos_commands.c"
         "src/escpos_utils.c"
         "src/escpos_formatter.c"
+        "src/escpos_barcode.c"
+        "src/escpos_qr.c"
         "src/escpos_image.c"
         "src/transport/escpos_usb.c"
     INCLUDE_DIRS

@@ -62,7 +62,7 @@ typedef struct {
     uint16_t max_width;                   /**< Maximum print width (dots) */
     uint16_t print_width;                 /**< Desired output width in dots (0 = original/auto) */
     escpos_align_t align;                 /**< Image alignment within max_width */
-    uint8_t threshold;                    /**< Gray-to-mono threshold (0-255, lower prints darker) */
+    uint8_t threshold;                    /**< Gray-to-mono threshold (0-255, higher prints darker) */
     bool auto_scale;                      /**< Auto-scale if image exceeds max_width */
     uint8_t quality;                      /**< Quality for lossy formats (1-100) */
 } escpos_image_params_t;

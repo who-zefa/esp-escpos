@@ -43,6 +43,12 @@ typedef enum {
     ESCPOS_STYLE_UNDERLINE     = 0x80,
 } escpos_style_t;
 
+typedef struct {
+    const char *text;
+    uint8_t width;                 /* Column width in characters */
+    escpos_align_t align;
+} escpos_text_column_t;
+
 /* ─────────────────────────────────────────────────────────────────────────────
  * Barcode / QR types
  * ───────────────────────────────────────────────────────────────────────────*/
@@ -65,12 +71,27 @@ typedef enum {
     ESCPOS_BARCODE_HRI_BOTH  = 3,
 } escpos_barcode_hri_t;
 
+typedef struct {
+    escpos_barcode_type_t type;
+    uint8_t width;                 /* Module width, usually 2..6 */
+    uint8_t height;                /* Barcode height in dots, 1..255 */
+    escpos_barcode_hri_t hri;
+    escpos_font_t hri_font;
+    escpos_align_t align;
+} escpos_barcode_config_t;
+
 typedef enum {
     ESCPOS_QR_EC_L = 48,   /* ~7%  */
     ESCPOS_QR_EC_M = 49,   /* ~15% */
     ESCPOS_QR_EC_Q = 50,   /* ~25% */
     ESCPOS_QR_EC_H = 51,   /* ~30% */
 } escpos_qr_ec_t;
+
+typedef struct {
+    uint8_t size;                  /* Dot size per QR module, 1..16 */
+    escpos_qr_ec_t ec_level;       /* Host QR encoder currently supports ESCPOS_QR_EC_M */
+    escpos_align_t align;
+} escpos_qr_config_t;
 
 /* ─────────────────────────────────────────────────────────────────────────────
  * Paper cut
