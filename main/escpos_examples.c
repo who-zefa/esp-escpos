@@ -115,7 +115,7 @@ esp_err_t example_image_printing(escpos_printer_t *printer)
     params.dither_mode = ESCPOS_DITHER_FLOYD_STEINBERG;
     params.align = ESCPOS_ALIGN_CENTER;
     params.max_width = escpos_get_printer_width_dots(printer);
-    params.threshold = 60;
+    params.threshold = 40; /* Lower threshold for darker print (0-255) */
 
     escpos_image_t image = {0};
     esp_err_t err = escpos_image_load_from_buffer(image_bmp_start,

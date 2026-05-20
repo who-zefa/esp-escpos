@@ -62,18 +62,18 @@ beep does nothing, the printer likely does not support that command.
 
 ## Barcodes And QR Codes
 
-EAN13 and QR codes are rendered by the library and sent as raster image data.
+Code128, EAN13, and QR codes are rendered by the library and sent as raster image data.
 This is useful for printers with incomplete barcode or QR command support.
 
-For other barcode types, start with:
+For barcode printing, start with:
 
 ```c
 escpos_barcode_config_t barcode =
     escpos_barcode_get_default_config(ESCPOS_BARCODE_CODE128);
 ```
 
-If a printer has trouble with command-based barcodes, prefer EAN13 where it
-matches your use case, or print a QR code.
+If a printer has trouble with command-based barcodes, prefer Code128, EAN13, or
+QR because those paths do not depend on the printer's barcode firmware.
 
 ## Images
 

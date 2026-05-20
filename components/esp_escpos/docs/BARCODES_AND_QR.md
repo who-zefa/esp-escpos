@@ -9,7 +9,7 @@ escpos_barcode_config_t barcode =
     escpos_barcode_get_default_config(ESCPOS_BARCODE_CODE128);
 
 barcode.align = ESCPOS_ALIGN_CENTER;
-barcode.width = 3;
+barcode.width = 2;
 barcode.height = 80;
 barcode.hri = ESCPOS_BARCODE_HRI_BELOW;
 
@@ -34,7 +34,9 @@ EAN13 accepts:
 - 12 digits: checksum is generated
 - 13 digits: checksum is validated
 
-EAN13 is rendered locally and sent as raster image data. This avoids relying on weak or inconsistent printer barcode command support.
+Code128 and EAN13 are rendered locally and sent as raster image data. This avoids relying on weak or inconsistent printer barcode command support.
+
+The Code128 renderer currently uses Code Set B, which covers normal printable text such as order IDs and transaction IDs.
 
 ## QR Code
 

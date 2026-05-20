@@ -1,8 +1,7 @@
 /*
  * Barcode printing example.
  *
- * Code128 uses ESC/POS barcode commands. EAN13 is rendered by the library
- * and sent as raster image data for printers with weak barcode support.
+ * Code128 and EAN13 are rendered by the library and sent as raster image data.
  */
 
 #include "esp_err.h"
@@ -18,6 +17,7 @@ void app_main(void)
 
     escpos_barcode_config_t code128 = escpos_barcode_get_default_config(ESCPOS_BARCODE_CODE128);
     code128.align = ESCPOS_ALIGN_CENTER;
+    code128.width = 2;
     code128.height = 80;
     ESP_ERROR_CHECK(escpos_write_text_aligned(printer, "Code128", ESCPOS_ALIGN_CENTER));
     ESP_ERROR_CHECK(escpos_write_text(printer, "\n"));

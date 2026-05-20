@@ -130,6 +130,8 @@ ESP_ERROR_CHECK(escpos_print_barcode(printer, "5901234123457", &ean));
 
 EAN13 accepts 12 or 13 digits. With 12 digits, the checksum is generated. With 13 digits, the checksum is validated.
 
+Code128 and EAN13 are rendered locally and sent as raster image data, so they do not rely on the printer barcode command implementation.
+
 ## QR Code
 
 ```c

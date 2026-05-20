@@ -132,5 +132,5 @@ Each file contains its own `app_main`, so copy one example into your app or use 
 
 - USB is the active transport in the current component build.
 - Paper width is local configuration, not printer detection.
-- QR and EAN13 are rendered locally and sent as raster data where needed.
+- QR, Code128, and EAN13 are rendered locally and sent as raster data where needed.
 - BMP image loading supports uncompressed BMP data.
